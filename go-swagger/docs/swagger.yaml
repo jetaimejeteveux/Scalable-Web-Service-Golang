@@ -1,0 +1,87 @@
+definitions:
+  main.Item:
+    properties:
+      description:
+        type: string
+      'item_id example:':
+        type: string
+      quantity:
+        type: integer
+    type: object
+  main.Order:
+    properties:
+      customer_name:
+        example: Ali
+        type: string
+      items:
+        $ref: '#/definitions/main.Item'
+      order_id:
+        example: "1"
+        type: string
+      ordered_at:
+        type: string
+    type: object
+info:
+  contact: {}
+  title: kampus merdeka API Docs
+paths:
+  /orders:
+    get:
+      consumes:
+      - application/json
+      description: creater new order with input on payload
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/main.Order'
+            type: array
+      summary: get all order
+      tags:
+      - orders
+    post:
+      consumes:
+      - application/json
+      description: creater new order with input on payload
+      parameters:
+      - description: create order
+        in: body
+        name: order
+        required: true
+        schema:
+          $ref: '#/definitions/main.Order'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Order'
+      summary: Create an order
+      tags:
+      - orders
+  /orders/{orderID}:
+    get:
+      consumes:
+      - application/json
+      description: creater new order with input on payload
+      parameters:
+      - description: id order
+        in: path
+        name: orderId
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Order'
+      summary: get detail order
+      tags:
+      - orders
+swagger: "2.0"

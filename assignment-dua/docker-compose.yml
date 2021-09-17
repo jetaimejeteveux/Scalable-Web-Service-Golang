@@ -1,0 +1,11 @@
+version: '3.1'
+services:
+  db:
+    container_name: "hacktiv-db-4"
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: assignmentdua
+    ports:
+      - "3303:3306"

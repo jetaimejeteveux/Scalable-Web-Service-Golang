@@ -13,4 +13,13 @@ func main() {
 	fmt.Println("numberB value :", *numberB)
 	fmt.Println("number B address :", numberB)
 
+	number := 10
+	fmt.Println(number)
+
+	change(&number, 100)
+	fmt.Println(number)
+
+}
+func change(number *int, newNumber int) {
+	*number = newNumber
 }
